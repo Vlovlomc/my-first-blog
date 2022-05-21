@@ -7,16 +7,14 @@
     <h1>A (un)heading</h1>
     <br>
     <article>
-        <time>published: 14.06.2014, 12:14</time>
-        <h2><a href="">How to get away with murder</a></h2>
-        <p>I'm not responsible for any legal actions that might be taken place.</p>
-        <p>It works!</p>
+        {{ posts }}
     </article>
-    <br>
-    <article>
-        <time>published: 14.06.2014, 12:14</time>
-        <h2><a href="">My second post</a></h2>
-        <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</p>
-    </article>
+    {% for post in posts %}
+        <article>
+            <time>published: {{ post.published_date }}</time>
+            <h2><a href="">{{ post.title }}</a></h2>
+            <p>{{ post.text|linebreaksbr }}</p>
+        </article>       
+    {% endfor %}
 </body>
 </html>
